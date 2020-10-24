@@ -8,10 +8,13 @@ const botonesautocomplete = document.getElementsByClassName("autocomplete")
 const sectionautocomplete = document.getElementById("sugerenciasinput")
 const botonessugerencias = document.getElementsByClassName("botonresult")
 const sugerenciasbotones = document.getElementById("botonresultados")
-
-
+const desplegadotemas = document.getElementById("desplegadotemas")
+const temadia = document.getElementById("temadia")
+const temanoche = document.getElementById("temanoche")
 const inputbuscador = document.getElementById("search")
-
+const temas= document.getElementById("tema")
+const elegirtema = document.getElementById("elegirtema")
+const namegiftendencia = document.getElementById("namegiftendencia")
 
 
 
@@ -65,7 +68,12 @@ function tendencia() {
 }
 
 const enviar = document.getElementById("enviar")
-enviar.addEventListener("click",mostrarbusqueda);
+enviar.addEventListener("click",mostrarbusqueda)
+inputbuscador.addEventListener("keypress",function(e){
+    if(e.code=="Enter"){
+        mostrarbusqueda()
+    }
+})
 
 function mostrarbusqueda() {
     const aborrar = document.getElementById("default")
@@ -134,6 +142,7 @@ function autocomplete (input){
     .catch ( error => console.log (error))
     return nombregift
 }
+
 function autocompletebusqueda(evento) {
     const aborrar = document.getElementById("default")
     const sectionbusqueda = document.getElementById("buscar")
@@ -209,4 +218,25 @@ for (let i = 0; i < botonessugerencias.length; i++) {
     element.addEventListener("click",clicsugerencia)
 }
 
-    
+function mostrarbotondetemas(){
+
+    if(desplegadotemas.style.display=="none") {
+        desplegadotemas.style.display="block"
+    } else {
+        desplegadotemas.style.display="none"
+    }
+}
+elegirtema.addEventListener("click",mostrarbotondetemas)
+
+function cambiotemas(e){
+    const value=e.target.id  
+    if(value=="temadia") {
+        temas.setAttribute("href","css1.css")
+    }else if(value=="temanoche") {
+        temas.setAttribute("Href","cssnight.css")
+    }
+
+}
+
+temadia.addEventListener("click", cambiotemas)
+temanoche.addEventListener("click",cambiotemas)

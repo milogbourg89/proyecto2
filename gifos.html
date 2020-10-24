@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div class="background">
+                <div class="top">
+                     <header class="bienvenidos">
+                         <h1>Bienvenidos/as a Guifos.com! ------Donde los gifs están.//////Número de visitas:</h1>
+                     </header>
+                </div>
+                <div class="center">
+                    <nav class="nav">
+                        <div class="menu">
+                            <img id="flecha" src="arrow.svg" alt="">
+                            <img src="gifOF_logo.png" alt="gifOF_logo">
+                        </div>
+                    </nav>
+                </div>
+    
+    <div id="captura">
+        <div class="cuadrogris1" id="captura1">
+            <p class="capturehead">Crear Guifos</p>
+            <div class="headcapture1">
+            <img src="windowimg.png" alt="">
+            <p>Aquí podrás crear tus propios guifos</p>
+            </div>
+            <ul>Crear ttu guifo es muy fácil, graba cualquier imagen con tu cámara y obtén guifos personalizados. Los pasos para crear tu guifo son:</ul>
+                    <li>1) Dar permisos de acceso a la cámara (sólo por el tiempo de uso)</li>
+                    <li>2) Capturar tu momento guifo</li>
+                    <li>3) Revisar el momento</li>
+                    <li>4) Listo para subir y compartir!</li>
+                    <li>¿Quieres comenzar a crear tu guifo ahora?</li>
+            <div class="botonescapture1">
+             <button id="cancelarcapt1" class="botonesrosa">Cancelar</button>
+             <button id="comenzarcapt1" class="botonesrosa">Comenzar</button>
+            </div>
+        </div>
+        <div class="cuadrogris2" id="captura2">
+            <p id="titulocapt2" class="capturehead">Un Chequeo Antes de Empezar</p>
+            
+            <div class="botones2">
+                <img src="camera.svg" alt="">
+                <button id="botoncaptura2" class="botonesrosa">Captura</button>
+            </div>
+        </div>
+        <div class="cuadrogris3" id="captura3">
+            <p id="titulocaptura3" class="capturehead">Captura Tu Guifo</p>
+            
+            <div class="botones3">
+                <p id="cronometrocapt3">00:00:00:00</p>
+                <div class="botones3a">
+                    <img id="captureimg" src="recording.svg" alt="">
+                    <button id="stop">Listo</button>
+                </div>
+            </div>
+        </div>
+        <div class="cuadrogris4" id="captura4">
+                <p class="capturehead">Vista Previa</p>
+                <video id="videofile" controls src=""></video>
+                <div class="botonera">
+                    <p id="cronometrocapt4">00:00:00:00</p>
+                    <img id="play" src="forward.svg" alt="">
+                    <div id="animacion"></div>
+                    <div class="botones4">
+                        <button id="repetircaptura" class="botonblanco">Repetir Captura</button>
+                        <button id="subirguifo" class="botonesrosa">Subir Guifo</button>
+                    </div>
+                </div>
+        </div>
+        <div class="cuadrogris5" id="captura5">
+            <p class="capturehead">Subiendo Guifo</p>
+            <div class="cuadroblanco">
+                <img class="globo" src="globe_img.png" alt="">
+                <p class="bold">Estamos subiendo tu guifo...</p>
+                <div id="animacion"></div>
+                <p>Tiempo restante: algunos minutos</p>
+             </div>
+             <div class="botones5">
+                <button class="botonblanco">Cancelar</button>
+            </div>
+        </div>
+        <div class="cuadrogris6" id="captura6">
+            <div class="head6">
+                <p class="capturehead">Guifo Subido con Éxito</p>
+                <img src="button_close.svg" alt="">
+            </div>
+            <div class="videodiv">
+                <video id="videofile" controls src=""></video>
+                <div class="body6">
+                    <p>Guifo creado con éxito</p>
+                    <button class="botonblanco">Copiar Enlace Guifo</button>
+                    <button class="botonblanco">Descargar Guifo</button>
+                </div>
+            </div>
+            <div class="botonera6">
+                <button class="botonesrosa">Listo</button>
+            </div>
+        </div>
+
+            <div id="misguifos">
+                <p class="cuadro">Mis guifos</p>
+                <video id="videofile" controls src=""></video>
+                <img src="" alt="">
+                <img src="" alt="">
+                <img src="" alt="">
+            </div>
+        
+    </div>
+    <script src="gifos.js"> </script>
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
+
+</body>
+</html>

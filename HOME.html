@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Proyecto#2</title>
-    <link rel="stylesheet" type="text/css" href="css1.css">
+    <link id="tema" rel="stylesheet" type="text/css" href="css1.css">
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap" rel="stylesheet">
-    <script src="css1.css"></script>
 </head>
 <body>
 <div class="background">
@@ -22,7 +21,14 @@
                     <img src="gifOF_logo.png" alt="gifOF_logo">
                 <div class="botones">
                     <button class="crearGuifos">Crear Guifos</button>
-                    <button class="elegirGuifos">Elegir tema</button>
+                    <div class="tema">
+                        <button id="elegirtema" class="elegirGuifos">Elegir tema</button>
+                        <img src="dropdown.svg" alt="" class="dropdown">
+                        <div id="desplegadotemas">
+                            <button id="temadia">Sailor Day</button>
+                            <button id="temanoche">Sailor Night</button>
+                        </div>
+                    </div>
                     <button class="misGuifos">Mis Guifos</button>
                 </div>
             </div>
@@ -34,7 +40,7 @@
                         <input class="search" type="text" id="search" placeholder="Buscar gifs, hashtags, temas, busca lo que quieras...">
                     <div class="bb">
                     <img src="lupa.svg" alt="">
-                    <button id="enviar">Enviar</button>
+                    <button id="enviar">Buscar</button>
                     </div>    
                 </div>
             </div>
@@ -93,7 +99,7 @@
     <div class="tendenciashoy">
             <h2 class="cuadro">Tendencias:</h2>
         <div class="resultado">  
-            <p></p>  
+            <p id="namegiftendencia"></p>  
             <img class="tendencias" src="" alt="">
             <img class="tendencias" src="" alt="">
             <img class="tendencias" src="" alt="">
