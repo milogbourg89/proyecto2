@@ -29,10 +29,16 @@ h1{
 .menu {
   display:flex;
   margin-top:45px;
+  justify-content:space-between;
 }
 .menu #flecha{
   width: 24px;
   margin-right: 20px;
+}
+.menu .botones{
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
 .tema{
@@ -42,29 +48,19 @@ h1{
 
 }
 .tema img{
-    width:10px;
-    padding-left:15px;
-    padding-right:15px;
-    box-shadow: 1px 1px; 
-    border: 1px solid;
-    background: #F7C9F3 100%;
-    margin-left:-3
+  width:10px;
 }
-.dropdown{
-  display:block;
-}
-.menu .botones{
-  display:flex;
-  justify-content:flex-end;
-  align-items: center;
-  margin:30px;
+.tema .dropdown{
+  padding-left:12px;
+  padding-right:12px;
+  box-shadow: 1px 1px; 
+  border: 1px solid;
+  background: #F7C9F3 100%;
 }
 .menu img{
   justify-content:flex-start;
-  height:64px;
-  px;
+  height:34px;
 }
-
 .crearGuifos{
   font-size: 16px;
   font-family: 'Chakra Petch', sans-serif;
@@ -93,6 +89,35 @@ h1{
   border:none;
   margin-left:10px;
 }
+#desplegadotemas{
+  display: none;
+}
+.desplegadotemas{
+  display:flex;
+  position: relative;
+  top: 15px;
+  right: 157px;
+  flex-direction:column;
+  justify-content:space-around;
+  margin-left:90%;
+  margin-top:-13px;
+  background:#E6E6E6 100%;
+  padding:10px;
+  width:fit-content;
+  box-shadow:-2px -2px #B4B4B4;
+}
+.desplegadotemas button{
+  justify-content:center;
+  font-size: 16px;
+  font-family: 'Chakra Petch', sans-serif;
+  background:#F0F0F0 100%;
+  border: 1px #CCA6C9 100% solid;
+  width:150px;
+  height:36px;
+  margin-top:5px;
+}
+
+
 #buscabusca{
   background:#E6E6E6 100%;
   height:99px;
@@ -301,9 +326,7 @@ h1{
   margin:3px;
 }
 
-#desplegadotemas{
-  display: none;
-}
+
 .capturehead{
   font-family: 'Chakra Petch', sans-serif;
   font-size: 14px;
@@ -458,7 +481,7 @@ h1{
   margin-left:200px;
   margin-top:100px;
 }
-#cronometro{
+.cronometro{
   border:1px #979797 100%;
   box-shadow:-2px -2px #E6E6E6 100%;
   width:124px;
@@ -533,14 +556,18 @@ h1{
   margin-left:20px;
 }
 #animacion{
-  width:20px;
-  padding-top:4px;
-  padding-left:200px;
+  display:grid;
+  grid-template-columns: repeat(17, 1fr);
+  column-gap: 2px;
+  background: #B4B4B4 100%;
+  width:240px;
   height:20px;
   box-shadow: 1px 1px; 
   border: 1px solid;
-  background: #F7C9F3 100%;
   margin-left:4px;
+}
+#animacion span{
+  background: #999999;
 }
 .botonera{
   display:flex;
@@ -654,4 +681,8 @@ h1{
 #misguifos #videofile{
   width:592px;
   height:298px;
+}
+.menu2{
+  display: flex;
+  margin: auto;
 }

@@ -68,6 +68,8 @@ function capturaunoados(){
         })
 }
 
+//_______________CAPTURA DE 2 A 3 _________________________________//
+
 const captura3 = document.getElementById("captura3")
 const botoncaptura2=document.getElementById("botoncaptura2")
 botoncaptura2.addEventListener("click",capturadosatres)
@@ -105,9 +107,17 @@ repetircaptura.addEventListener("click",volveracapturar)
 
 function volveracapturar() {
     captura4.style.display="none"
-    captura2.style.display="block"
+    capturadosatres()
     timerObj.reiniciar()
 }
+
+const play=document.getElementById("play")
+
+play.addEventListener("click",function(){
+    videofile.play()
+    printPreviewTime(tiempotranscurrido)
+})
+
 
 
 //-----------------------------//cronometro//----------------------------------// 
@@ -151,26 +161,26 @@ const timerObj = {
     }
   }
   
-//   function timerProgress(time) {
-//     const arrSpn = document.getElementById('progressPrev').children;
-//     let counter = 0;
-//     const timer = (time * 1000) / arrSpn.length;
-//     let interval; // <--- ID para detener la ejecución del interval
-//     const printSpn = ()=> {
-//         if (counter < arrSpn.length) {
-//             arrSpn[counter].style.background = '#F7C9F3'
-//             counter++;
-//         } else {
-//             for (let i = 0; i < arrSpn.length; i++) {
-//                 const element = arrSpn[i];
-//                 element.style.background = '#999999';
-//                 counter = 0; // <--- Volvemos el contador a 0
-//             }
-//             clearInterval(interval); // <--- Paramos la ejecución del interval
-//         }
-//     }
-//     interval = setInterval(printSpn, timer); // <-- Llamamos al interval
-//   }
+// function timerProgress(time) {
+//    const arrSpn = document.getElementById('animacion').children;
+//    let counter = 0;
+//    const timer = (time * 1000) / arrSpn.length;
+//    let interval; // <--- ID para detener la ejecución del interval
+//    const printSpn = ()=> {
+//        if (counter < arrSpn.length) {
+//            arrSpn[counter].style.background = '#F7C9F3'
+//            counter++;
+//        } else {
+//            for (let i = 0; i < arrSpn.length; i++) {
+//                const element = arrSpn[i];
+//                element.style.background = '#999999';
+//                counter = 0; // <--- Volvemos el contador a 0
+//            }
+//            clearInterval(interval); // <--- Paramos la ejecución del interval
+//        }
+//    }
+//    interval = setInterval(printSpn, timer); // <-- Llamamos al interval
+//  }
   
   function printPreviewTime(time) {
     let s = 0;
@@ -201,3 +211,4 @@ const timerObj = {
   
     idInterval = setInterval(printTime ,1000);
   }
+
