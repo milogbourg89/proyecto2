@@ -24,13 +24,36 @@ for (let index = 0; index < imagensugerencias.length; index++) {
     .then (info => {
         const url = info.images.downsized.url
         element.setAttribute ("src", url)
-
         const titleimage = info.title 
-        titlegift[index].innerHTML=titleimage
+        if(titleimage == ""){
+            titlegift[index].innerHTML="#maspopular"
+        }else {
+            titlegift[index].innerHTML=titleimage
+        }
+        const vermas=document.getElementsByClassName("vermas")
+        vermas[index].addEventListener("click",function(){
+            const aborrar = document.getElementById("default")
+            const sectionbusqueda = document.getElementById("buscar")
+            sectionbusqueda.style.display="block"
+            aborrar.style.display="none"
 
-    })
- } 
+            search(titlegift[index].textContent)
+        .then (info => {
+            for (let index = 0; index < imagengift.length; index++) {
+                const elementox = imagengift[index];
+                const url = info[index].images.downsized.url
+                elementox.setAttribute ("src", url)      
+            }    
+        })
+        mostrarsugeridos(titlegift[index].textContent)
+        })
+    }
+    )}
 
+    function mostrarvermas(){
+
+    }
+    
 function sugerencia() {
     
     const sugerencias = fetch ("https://api.giphy.com/v1/gifs/random?api_key=O8DnmiqTOpKIYH8utBpDMqdCx7DJ77h0")
@@ -185,14 +208,9 @@ function autocompletebusqueda(evento) {
         .then (info => {
             for (let i = 0; i < botonessugerencias.length; i++) {
                 const element = botonessugerencias[i];
-                console.log(info)
                 const value = info[i].name
                 element.textContent=value 
-
-            
-            }
-
-            
+            }            
         } )
     }
 
@@ -240,3 +258,7 @@ function cambiotemas(e){
 
 temadia.addEventListener("click", cambiotemas)
 temanoche.addEventListener("click",cambiotemas)
+
+
+
+    

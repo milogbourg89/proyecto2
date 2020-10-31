@@ -1,16 +1,28 @@
 const video = document.getElementById("video")
 const grabar = document.getElementById("grabar")
 const stop = document.getElementById("stop")
-const giftsettings = { 
+const videosettings = { 
     type:"video",
     frameRate: 1,
     quality: 10,
     width: 825,
     height: 400,
 }
+const giftsettings= {
+    type:"gift",
+    frameRate: 1,
+    quality: 10,
+    width: 370,
+    height: 190,
+    hidden: 240,
+}
 let datavideo 
 const videofile = document.getElementById("videofile")
-let giftrecorded
+let videorecorded
+let giftrecorded 
+let giftblob
+let gifturlobj
+let giftform
 const comenzarcapt1 = document.getElementById("comenzarcapt1")
 const pantallas = document.getElementById("pantallas")
 const cancelarcapt1 = document.getElementById("cancelarcapt1")
@@ -43,8 +55,8 @@ function capturar() {
     
 //  })
 stop.addEventListener("click", function() {
-    giftrecorded.stopRecording (function(){
-        const blob = giftrecorded.getBlob()
+    videorecorded.stopRecording (function(){
+        const blob = videorecorded.getBlob()
         const url = window.URL.createObjectURL(blob)
         videofile.src = url
     })
@@ -85,16 +97,24 @@ function capturadosatres() {
     titulocapt3.insertAdjacentElement("afterend",camaracaptura)
     timerObj.cronometrar()
 
-    giftrecorded = RecordRTC(datavideo, giftsettings)
+    videorecorded = RecordRTC(datavideo, videosettings)
+    giftrecorded= RecordRTC(datavideo, giftsettings)
+    videorecorded.startRecording ()
     giftrecorded.startRecording ()
 
     stop.addEventListener("click", function() {
         tiempotranscurrido=timerObj.parar()
         timerObj.reiniciar()
-        giftrecorded.stopRecording (function(){
-            const blob = giftrecorded.getBlob()
+        videorecorded.stopRecording (function(){
+            const blob = videorecorded.getBlob()
             const url = window.URL.createObjectURL(blob)
             videofile.src = url
+        })
+        giftrecorded.stopRecording(function(){
+        giftblob=giftrecorded.getBlob()
+        gifturlobj=window.URL.createObjectURL(giftblob)
+        giftform=new FormData()
+        giftform.append("file",giftblob,"migifo.gift")
         })
         captura3.style.display="none"
         captura4.style.display="block"
@@ -116,8 +136,45 @@ const play=document.getElementById("play")
 play.addEventListener("click",function(){
     videofile.play()
     printPreviewTime(tiempotranscurrido)
+    timerProgress(tiempotranscurrido)
 })
 
+///______________________-CAPTURA 4 A 5 _____________________///
+const subirguifo=document.getElementById("subirguifo")
+const captura5=document.getElementById("captura5")
+const captura6=document.getElementById("captura6")
+subirguifo.addEventListener("click",function(){
+    captura4.style.display="none"
+    captura5.style.display="block"
+
+    datavideo.getTracks().forEach(track => {
+        track.stop()
+    });
+    subirmiguifo(giftform)
+    .then(respuesta=>{
+        const giftid=respuesta.data.id 
+        traergiftporid(giftid)
+        .then(data=>{
+            const gifturl=data.data.images.original.url 
+            const miguifo=document.getElementById("miguifo")
+            miguifo.setAttribute("src",gifturl)
+            const descargarguifo=document.getElementById("descargarguifo")
+            descargarguifo.href=gifturlobj
+        })
+        captura5.style.display="none"
+        captura6.style.display="block"
+
+    })
+})
+
+////__________________________Llamado de migift______________////////
+
+function traergiftporid(id){
+    const font=fetch("https://api.giphy.com/v1/gifs/"+id+"?api_key=O8DnmiqTOpKIYH8utBpDMqdCx7DJ77h0")
+    .then(data=>data.json())
+    .catch(error=>console.log(error))
+    return font 
+}
 
 
 //-----------------------------//cronometro//----------------------------------// 
@@ -161,26 +218,28 @@ const timerObj = {
     }
   }
   
-// function timerProgress(time) {
-//    const arrSpn = document.getElementById('animacion').children;
-//    let counter = 0;
-//    const timer = (time * 1000) / arrSpn.length;
-//    let interval; // <--- ID para detener la ejecución del interval
-//    const printSpn = ()=> {
-//        if (counter < arrSpn.length) {
-//            arrSpn[counter].style.background = '#F7C9F3'
-//            counter++;
-//        } else {
-//            for (let i = 0; i < arrSpn.length; i++) {
-//                const element = arrSpn[i];
-//                element.style.background = '#999999';
-//                counter = 0; // <--- Volvemos el contador a 0
-//            }
-//            clearInterval(interval); // <--- Paramos la ejecución del interval
-//        }
-//    }
-//    interval = setInterval(printSpn, timer); // <-- Llamamos al interval
-//  }
+ function timerProgress(time) {
+    const arrSpn = document.getElementById('animacion').children;
+    let counter = 0;
+    const timer = (time * 1000) / arrSpn.length;
+    let interval;  
+    const printSpn = ()=> {
+        if (counter < arrSpn.length) {
+            arrSpn[counter].style.background = '#F7C9F3'
+            counter++;
+        } else {
+            for (let i = 0; i < arrSpn.length; i++) {
+                const element = arrSpn[i];
+                element.style.background = '#999999';
+                counter = 0;  
+            }
+            clearInterval(interval);  
+        }
+    }
+    interval = setInterval(printSpn, timer);  
+  }
+
+  ///____________________animacion capt4_______________////
   
   function printPreviewTime(time) {
     let s = 0;
@@ -211,4 +270,23 @@ const timerObj = {
   
     idInterval = setInterval(printTime ,1000);
   }
+
+///____________-subir gifo a API_________________//
+
+let abortcontroler 
+
+function subirmiguifo(form){
+    abortcontroler=new AbortController()
+    const hidder=new Headers()
+    const found=fetch("https://upload.giphy.com/v1/gifs?api_key=O8DnmiqTOpKIYH8utBpDMqdCx7DJ77h0",{
+        method:"POST",
+        headers:hidder,
+        body:form,
+        mode:"no-cors",
+        signal:abortcontroler.signal,
+    })
+    .then(data=>data.json())
+    .catch(error=>alert(error))
+    return found
+}
 

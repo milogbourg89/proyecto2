@@ -609,7 +609,7 @@ h1{
   color:#110038 64%;
   font-size:12px;
 }
-.cuadroblanco #animacion{
+.cuadroblanco #animacion2{
   padding-left:300px;
 }
 .cuadroblanco .bold{
@@ -673,12 +673,11 @@ h1{
   margin-top:60px;
   margin-right:40px;
 }
-#misguifos img{
-  display:flex;
-  justify-content:space-between;
+#misguifosindex{
+  display: none;
 }
 
-#misguifos #videofile{
+#misguifosindex #videofile{
   width:592px;
   height:298px;
 }
