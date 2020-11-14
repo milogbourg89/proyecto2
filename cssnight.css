@@ -3,7 +3,7 @@ body{
   padding:0;
 }
 .background{
-  background-color: #ff33ff12;
+  background-color:rgb(61, 4, 78);
 }
 .center{
   margin: 70px;
@@ -45,26 +45,31 @@ h1{
   display:flex;
   justify-content:flex-end;
   align-items: center;
+
 }
 .tema img{
   width:10px;
+  border: 1px solid #110038;
+  background: #EE3EFE 100%;
 }
 .tema .dropdown{
   padding-left:12px;
   padding-right:12px;
-  box-shadow: 1px 1px; 
+  box-shadow: 1px 1px #110038; 
   border: 1px solid;
-  background: #F7C9F3 100%;
+  background: #EE3EFE 100%;
+
 }
 .menu img{
   justify-content:flex-start;
   height:34px;
+  color:white;
 }
 #logo_dia{
-  display: block;
+  display: none;
 }
 #logo_noche{
-  display: none;
+  display: block;
 }
 .crearGuifos{
   font-size: 16px;
@@ -72,22 +77,27 @@ h1{
   height: 36px;
   width: 144px;
   box-shadow: 1px 1px; 
-  border: 1px solid;
-  background: #F7C9F3 100%;
+  border: 1px solid #110038;
+  background: #EE3EFE 100%;
+  color:white;
 }
+
 .elegirGuifos{
   font-size: 16px;
   font-family: 'Chakra Petch', sans-serif;
   height: 36px;
   width: 144px;
   box-shadow: 1px 1px; 
-  border: 1px solid;
-  background: #F7C9F3 100%;
+  border: 1px solid #110038;
+  background: #EE3EFE 100%;
   margin-left:10px;
+  color:white;
 }
+
 .misGuifos{
   font-size: 16px;
   font-family: 'Chakra Petch', sans-serif;
+  color:white;
   background:none;
   border:none;
   margin-left:10px;
@@ -104,7 +114,7 @@ h1{
   justify-content:space-around;
   margin-left:90%;
   margin-top:-13px;
-  background:#E6E6E6 100%;
+  background: #b4b4b4; 100%;
   padding:10px;
   width:fit-content;
   box-shadow:-2px -2px #B4B4B4;
@@ -119,12 +129,15 @@ h1{
   height:36px;
   margin-top:5px;
 }
+
+
 #buscabusca{
-  background:#E6E6E6 100%;
+  background:#8F8F8F 100%;
   height:99px;
-  box-shadow: -2px -2px #B4B4B4;
+  box-shadow: -2px -2px #ffffff;
   box-shadow:2px 2px #FFFFFF;
 }
+
 #buscabusca h2{
   font-family: 'Chakra Petch', sans-serif;
   font-size: 14px;
@@ -133,14 +146,16 @@ h1{
   height: 23px;
   box-shadow:-2px -2px #ffffff;
   size: 14px;
-  background: linear-gradient(90deg, #4180F6  0%, #F7C9F3 67%);
+  background: linear-gradient(90deg, #4180F6  0%, #EE3EFE 67%);
 }
+
 .buscador{
   display:inline-flex;
   width:98%
 }
+
 #sugerenciasinput{
-  background:#E6E6E6 100%;
+  background:#B4B4B4 100%;
   box-shadow:  -2px -2px #B4B4B4;
   box-shadow: 2px 2px #FFFFFF;
   display:flex;
@@ -175,13 +190,16 @@ h1{
   height:36px;
   margin-left:15px;
   margin-top:5px;
+  box-shadow: -1px -1px #FFFFFF;
   box-shadow: 1px 1px -1px -1px #b4b4b4;
 }
+
 .bb img{
   height: 16px;
   width: 16px;
   margin:8px;
 }
+
 .bb button {
   background: none;
   display:block;
@@ -189,14 +207,17 @@ h1{
   border: none;
   color:#b4b4b4;
 }
+
 #buscar{
   display:none;
   justify-content:space-between;
   margin-top:30px;
 }
+
 #hoytesugerimos{
   display:block;
 }
+
 .cuadro{ 
   font-family: 'Chakra Petch', sans-serif;
   font-size: 14px;
@@ -243,7 +264,7 @@ h1{
   height: 23px;
   box-shadow:-2px -2px #ffffff;
   size: 14px;
-  background: linear-gradient(90deg, #4180F6  0%, #F7C9F3 67%);
+  background: linear-gradient(90deg, #4180F6  0%, #EE3EFE 67%);
   display:flex;
   align-items: flex-start;
 }
@@ -275,12 +296,11 @@ h1{
   border: 1px #E6BBE2 solid;
   height:32px;
 }
-.blocktendencia:hover div{
-  display: block;
+.namegiftendencia:hover{
+  visibility: visible;
 }
-
 .namegiftendencia{
-  display: none;
+  visibility:hidden;
   font-family: 'Chakra Petch', sans-serif;
   font-size: 14px;
   color: #FFFFFF;
@@ -290,7 +310,7 @@ h1{
   background: linear-gradient(90deg, #4180F6  0%, #F7C9F3 67%);
   width:286px;
   position:relative;
-  bottom:30px;
+  top:303px;
   left:4px;
 }
 
@@ -344,7 +364,7 @@ h1{
   height: 23px;
   box-shadow:2px 2px #ffffff;
   height:24px;
-  background: linear-gradient(90deg, #4180F6  0%, #F7C9F3 67%);
+  background: linear-gradient(90deg, #4180F6  0%, #EE3EFE 67%);
   position:relative;
 }
 
@@ -356,7 +376,7 @@ h1{
   width: 144px;
   box-shadow: 1px 1px; 
   border: 1px solid;
-  background: #F7C9F3 100%;
+  background: #EE3EFE 100%;
 }
 .botonesrosa{
   font-size: 16px;
@@ -365,18 +385,19 @@ h1{
   width: 144px;
   box-shadow: 1px 1px; 
   border: 1px solid;
-  background: #F7C9F3 100%;
+  background: #EE3EFE 100%;
   margin-left:20px;
 
 }
 .botonblanco{
   font-size: 16px;
   font-family: 'Chakra Petch', sans-serif;
+  color: white;
   height: 36px;
   width: 144px;
   box-shadow: 1px 1px; 
   border: 1px solid;
-  background: #FFF4FD 100%;
+  background: #110038 100%;
   margin-left:20px;
 }
 
@@ -446,7 +467,7 @@ h1{
   display:block;
   justify-content:center;
   border:black;
-  background:#E6E6E6 100%;
+  background:#B4B4B4 100%;
   width:860px;
   height:548px;
   margin-left:200px;
@@ -484,7 +505,7 @@ h1{
   display:block;
   justify-content:center;
   border:black;
-  background:#E6E6E6 100%;
+  background:#B4B4B4 100%;
   width:860px;
   height:548px;
   margin-left:200px;
@@ -492,7 +513,7 @@ h1{
 }
 .cronometro{
   border:1px #979797 100%;
-  box-shadow:-2px -2px #E6E6E6 100%;
+  box-shadow:-2px -2px #B4B4B4 100%;
   width:124px;
   height:36px;
   background:#FFFFFF;
@@ -542,7 +563,7 @@ h1{
   display:block;
   justify-content:center;
   border:black;
-  background:#E6E6E6 100%;
+  background:#B4B4B4 100%;
   width:860px;
   height:548px;
   margin-left:200px;
@@ -560,7 +581,7 @@ h1{
   height:10px;
   box-shadow: 1px 1px; 
   border: 1px solid;
-  background: #F7C9F3 100%;
+  background: #EE3EFE 100%;
   padding:7px;
   padding-left:10px;
   padding-right:9px;
@@ -594,7 +615,7 @@ h1{
   display:block;
   justify-content:center;
   border:black;
-  background:#E6E6E6 100%;
+  background:#B4B4B4 100%;
   width:860px;
   height:548px;
   margin-left:200px;
@@ -607,7 +628,7 @@ h1{
   height:440px;
   background:#ffffff;
   border:1px #979797 solid;
-  box-shadow:-2px -2px #E6E6E6 100%;
+  box-shadow:-2px -2px #B4B4B4 100%;
   margin:auto;
   align-items:center;
   justify-content:center;
@@ -620,7 +641,9 @@ h1{
   color:#110038 64%;
   font-size:12px;
 }
-
+.cuadroblanco #animacion2{
+  padding-left:300px;
+}
 .cuadroblanco .bold{
   font-weight:bold;
   font-size:16px;
@@ -638,7 +661,7 @@ h1{
 .cuadrogris6{
   display:flex;
   border:black;
-  background:#E6E6E6 100%;
+  background:#B4B4B4 100%;
   width:721px;
   height:391px;
   margin:auto;
@@ -697,18 +720,4 @@ h1{
 }
 .menu2 a{
   margin:10px;
-}
-#animacion2{
-  display:grid;
-  grid-template-columns: repeat(23, 1fr);
-  column-gap: 2px;
-  background: #B4B4B4 100%;
-  width:300px;
-  height:20px;
-  box-shadow: 1px 1px; 
-  border: 1px solid;
-  margin-left:4px;
-}
-#animacion2 span{
-  background: #999999;
 }

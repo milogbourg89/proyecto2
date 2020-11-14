@@ -14,7 +14,8 @@ const temanoche = document.getElementById("temanoche")
 const inputbuscador = document.getElementById("search")
 const temas= document.getElementById("tema")
 const elegirtema = document.getElementById("elegirtema")
-const namegiftendencia = document.getElementById("namegiftendencia")
+const namegiftendencia = document.getElementsByClassName("namegiftendencia")
+const apikey="O8DnmiqTOpKIYH8utBpDMqdCx7DJ77h0"
 
 
 
@@ -56,7 +57,7 @@ for (let index = 0; index < imagensugerencias.length; index++) {
     
 function sugerencia() {
     
-    const sugerencias = fetch ("https://api.giphy.com/v1/gifs/random?api_key=O8DnmiqTOpKIYH8utBpDMqdCx7DJ77h0")
+    const sugerencias = fetch ("https://api.giphy.com/v1/gifs/random?api_key="+ apikey)
     .then ( res => res.json())
        .then ( info => {
         const url = info.data
@@ -67,19 +68,26 @@ function sugerencia() {
 
 }
 
+///////_________mostrartendencia_____________________-/////
 
 for (let index = 0; index < imagentendencias.length; index++) {
     const element = imagentendencias[index];
     tendencia()
     .then (info => {
         const url = info[index].images.downsized.url
+        const title=info[index].title.split(" ",4)
+        const tags=namegiftendencia[index].children
+        for (let i = 0; i < tags.length; i++) {
+            const element = tags[i];
+            element.textContent=`#${title[i]}`
+        }
         element.setAttribute ("src", url)
-    })
+    }) 
  } 
 
 function tendencia() {
  
-    const tendencias = fetch ("https://api.giphy.com/v1/gifs/trending?api_key=O8DnmiqTOpKIYH8utBpDMqdCx7DJ77h0&limit=25")
+    const tendencias = fetch ("https://api.giphy.com/v1/gifs/trending?api_key=" + apikey + "&limit=25")
     .then ( res => res.json())
        .then ( info => {
         const url = info.data
@@ -87,8 +95,9 @@ function tendencia() {
         })
        .catch ( error => console.log (error))
            return tendencias
-
 }
+
+
 
 const enviar = document.getElementById("enviar")
 enviar.addEventListener("click",mostrarbusqueda)
@@ -123,7 +132,7 @@ function mostrarbusqueda() {
 }
 
 function search(cuadro) {
-    const buscar = fetch ( "https://api.giphy.com/v1/gifs/search?api_key=O8DnmiqTOpKIYH8utBpDMqdCx7DJ77h0&q=" + cuadro + "&limit=4")
+    const buscar = fetch ( "https://api.giphy.com/v1/gifs/search?api_key=" + apikey + "&q=" + cuadro + "&limit=8")
     .then ( res => res.json())
     .then ( info => {
         const url = info.data
@@ -156,7 +165,7 @@ function capturar(e) {
 }
 
 function autocomplete (input){
-    const nombregift= fetch ( "https://api.giphy.com/v1/gifs/search/tags?api_key=O8DnmiqTOpKIYH8utBpDMqdCx7DJ77h0&q=" + input + "&limit=3")
+    const nombregift= fetch ( "https://api.giphy.com/v1/gifs/search/tags?api_key=" + apikey + "&q=" + input + "&limit=3")
     .then ( res => res.json())
     .then ( info => {
         const url = info.data
@@ -190,7 +199,7 @@ function autocompletebusqueda(evento) {
 }
 
     function searchsugerida (input){
-        const nombregift= fetch ( "https://api.giphy.com/v1/tags/related/" + input + "?" + "limit=3&api_key=O8DnmiqTOpKIYH8utBpDMqdCx7DJ77h0")
+        const nombregift= fetch ( "https://api.giphy.com/v1/tags/related/" + input + "?" + "limit=3&api_key=" + apikey)
         .then ( res => res.json())
         .then ( info => {
             const url = info.data
@@ -250,11 +259,13 @@ function cambiotemas(e){
     const value=e.target.id  
     if(value=="temadia") {
         temas.setAttribute("href","css1.css")
+        sessionStorage.setItem("tema","css1.css")
     }else if(value=="temanoche") {
         temas.setAttribute("Href","cssnight.css")
+        sessionStorage.setItem("tema", "cssnight.css")
     }
-
 }
+sessionStorage.setItem("tema", temas.getAttribute("href"))
 
 temadia.addEventListener("click", cambiotemas)
 temanoche.addEventListener("click",cambiotemas)

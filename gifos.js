@@ -28,6 +28,7 @@ const pantallas = document.getElementById("pantallas")
 const cancelarcapt1 = document.getElementById("cancelarcapt1")
 const captura1 = document.getElementById("captura1")
 const captura2 = document.getElementById("captura2")
+const apikey= "O8DnmiqTOpKIYH8utBpDMqdCx7DJ77h0"
 
 
 function comenzarcaptura(e) {
@@ -165,12 +166,13 @@ subirguifo.addEventListener("click",function(){
         captura6.style.display="block"
 
     })
+    uploadProgress()
 })
 
 ////__________________________Llamado de migift______________////////
 
 function traergiftporid(id){
-    const font=fetch("https://api.giphy.com/v1/gifs/"+id+"?api_key=O8DnmiqTOpKIYH8utBpDMqdCx7DJ77h0")
+    const font=fetch("https://api.giphy.com/v1/gifs/"+id+"?api_key=" + apikey)
     .then(data=>data.json())
     .catch(error=>console.log(error))
     return font 
@@ -271,22 +273,56 @@ const timerObj = {
     idInterval = setInterval(printTime ,1000);
   }
 
-///____________-subir gifo a API_________________//
+///____________Subir gifo a API_________________//
 
 let abortcontroler 
 
 function subirmiguifo(form){
     abortcontroler=new AbortController()
     const hidder=new Headers()
-    const found=fetch("https://upload.giphy.com/v1/gifs?api_key=O8DnmiqTOpKIYH8utBpDMqdCx7DJ77h0",{
+    const found=fetch("https://upload.giphy.com/v1/gifs?api_key=" + apikey,{
         method:"POST",
-        headers:hidder,
-        body:form,
-        mode:"no-cors",
-        signal:abortcontroler.signal,
+        headers: hidder,
+        body: form,
+        mode:"cors",
+        signal: abortcontroler.signal
     })
     .then(data=>data.json())
     .catch(error=>alert(error))
     return found
 }
 
+function uploadProgress() {
+    const arrSpn = document.getElementById('animacion2').children;
+    let counter = 0;
+    let interval; // <--- ID para detener la ejecución del interval  
+const printSpn = ()=> {
+    if (counter < arrSpn.length) {
+        arrSpn[counter].style.background = '#F7C9F3'
+        counter++;
+    } else {
+        for (let i = 0; i < arrSpn.length; i++) {
+            const element = arrSpn[i];
+            element.style.background = '#999999';
+            counter = 0; // <--- Volvemos el contador a 0
+        }
+        clearInterval(interval); // <--- Paramos la ejecución del interval
+    }
+}
+interval = setInterval(printSpn, 400); // <-- Llamamos al interval
+}
+
+/////______________-tema css_______________/////////////
+
+const estilotema=sessionStorage.getItem("tema")
+
+function cambiartema(tema){
+    const etiquetacss=document.getElementById("etiquetacss")
+    if(tema=="css1.css") {
+        etiquetacss.setAttribute("href", "css1.css")
+    } 
+    else{
+        etiquetacss.setAttribute("href","cssnight.css")
+    }
+}
+cambiartema(estilotema)
