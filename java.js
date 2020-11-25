@@ -26,8 +26,8 @@ for (let index = 0; index < imagensugerencias.length; index++) {
         const url = info.images.downsized.url
         element.setAttribute ("src", url)
         const titleimage = info.title 
-        if(titleimage == ""){
-            titlegift[index].innerHTML="#maspopular"
+        if(titleimage == "" || titleimage == " "){
+            titlegift[index].innerHTML = `popular Gif ${index}`
         }else {
             titlegift[index].innerHTML=titleimage
         }
@@ -132,7 +132,7 @@ function mostrarbusqueda() {
 }
 
 function search(cuadro) {
-    const buscar = fetch ( "https://api.giphy.com/v1/gifs/search?api_key=" + apikey + "&q=" + cuadro + "&limit=8")
+    const buscar = fetch ( "https://api.giphy.com/v1/gifs/search?api_key=" + apikey + "&q=" + cuadro + "&limit=12")
     .then ( res => res.json())
     .then ( info => {
         const url = info.data
@@ -152,7 +152,9 @@ function capturar(e) {
         for (let i = 0; i < botonesautocomplete.length; i++) {
             const element = botonesautocomplete[i];
             
-            const value = info[i].name 
+            let value;
+            if(info[i]) value = info[i].name
+            else value = input
             element.textContent = value
             element.addEventListener("click",autocompletebusqueda)
         }
@@ -184,7 +186,7 @@ function autocompletebusqueda(evento) {
     aborrar.style.display="none"
     sectionautocomplete.style.display="none"
     const input = evento.target.textContent
-    
+    mostrarsugeridos(input)
     search(input)
     .then (info => {
 
@@ -225,12 +227,9 @@ function autocompletebusqueda(evento) {
 
     function clicsugerencia(e){
         const value=e.target.textContent
-        console.log(value)
-        mostrarbusqueda(value) 
-
         search(value)
         .then (info => {
-
+        if(info.length < imagengift.length) return 
         for (let index = 0; index < imagengift.length; index++) {
             const element = imagengift[index];
             
@@ -239,6 +238,7 @@ function autocompletebusqueda(evento) {
             
         }
     })
+    mostrarsugeridos(value)
     }
 for (let i = 0; i < botonessugerencias.length; i++) {
     const element = botonessugerencias[i];
